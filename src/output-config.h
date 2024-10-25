@@ -35,6 +35,7 @@ struct OutputTargetConfig {
     std::string protocol;
     bool syncStart = false;
     bool syncStop = false;
+    //bool respectStreamDelay = true;
 
     nlohmann::json serviceParam;
     nlohmann::json outputParam;

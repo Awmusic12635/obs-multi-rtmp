@@ -117,6 +117,7 @@ class PushWidgetImpl : public PushWidget, public IOBSOutputEventHanlder
     obs_view_t* scene_view_ = 0;
     bool isUseDelay_ = false;
 
+    //bool respectStreamDelay_ = true;
 
     bool PrepareOutputService()
     {
@@ -554,9 +555,8 @@ public:
             SetMeAsHandler(output_);
         }
 
-        if (output_) {
+        /*if (output_) {
             isUseDelay_ = false;
-
             auto profileConfig = obs_frontend_get_profile_config();
             if (profileConfig) {
                 bool useDelay = config_get_bool(profileConfig, "Output", "DelayEnable");
@@ -570,7 +570,7 @@ public:
                 if (useDelay && delaySec > 0)
                     isUseDelay_ = true;
             }
-        }
+        }*/
 
         if (!PrepareOutputService())
         {
@@ -639,6 +639,7 @@ public:
     void LoadConfig()
     {
         name_->setText(QString::fromUtf8(config_->name));
+        //respectStreamDelay_ = config_->respectStreamDelay;
     }
 
     void ResetInfo()
@@ -805,3 +806,4 @@ public:
 PushWidget* createPushWidget(const std::string& targetid, QWidget* parent) {
     return new PushWidgetImpl(targetid, parent);
 }
+

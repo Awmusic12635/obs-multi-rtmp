@@ -15,6 +15,7 @@ add_library(${CMAKE_PROJECT_NAME} MODULE)
 
 find_package(libobs REQUIRED)
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE OBS::libobs)
+add_compile_options(-Wno-sign-conversion -Wno-shadow)
 
 if(ENABLE_FRONTEND_API)
   find_package(obs-frontend-api REQUIRED)

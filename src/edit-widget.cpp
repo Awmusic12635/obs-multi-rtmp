@@ -149,6 +149,7 @@ class EditOutputWidgetImpl: public EditOutputWidget
 
     QCheckBox* syncStart_ = 0;
     QCheckBox *syncStop_ = 0;
+    //QCheckBox* respectStreamDelay_ = 0;
 
     std::vector<std::string> EnumEncodersByCodec(const char* codec)
     {
@@ -483,6 +484,7 @@ public:
                     auto otherLayout = new QGridLayout();
                     otherLayout->addWidget(syncStart_ = new QCheckBox(obs_module_text("SyncStart"), gp), 0, 0);
                     otherLayout->addWidget(syncStop_ = new QCheckBox(obs_module_text("SyncStop"), gp), 1, 0);
+                    //otherLayout->addWidget(respectStreamDelay_ = new QCheckBox(obs_module_text("RespectStreamDelay"), gp), 2, 0);
                     gp->setLayout(otherLayout);
                 }
             }
@@ -810,6 +812,7 @@ public:
         config_->protocol = tostdu8(protocolSelector_->itemData(protocolSelector_->currentIndex()).toString());
         config_->syncStart = syncStart_->isChecked();
         config_->syncStop = syncStop_->isChecked();
+        //config_->respectStreamDelay = respectStreamDelay_->isChecked();
         config_->outputParam = outputSettings_->Save();
         config_->serviceParam = serviceSettings_->Save();
 
@@ -842,6 +845,7 @@ public:
         protocolSelector_->setCurrentIndex(protocolIndex);
         syncStart_->setChecked(target.syncStart);
         syncStop_->setChecked(target.syncStop);
+        //respectStreamDelay_->setChecked(target.respectStreamDelay);
     }
 
     void LoadVideoConfig(VideoEncoderConfig& config) {
@@ -956,3 +960,4 @@ public:
 EditOutputWidget* createEditOutputWidget(const std::string& targetid, QWidget* parent) {
     return new EditOutputWidgetImpl(targetid, parent);
 }
+

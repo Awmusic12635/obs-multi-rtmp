@@ -20,7 +20,7 @@ else()
   # clang options for ObjC
   set(_obs_clang_objc_options
       # cmake-format: sortable
-      -Werror=block-capture-autoreleasing -Wno-selector -Wno-strict-selector-match -Wnon-virtual-dtor -Wprotocol
+      -Wno-selector -Wno-strict-selector-match -Wnon-virtual-dtor -Wprotocol
       -Wundeclared-selector)
 
   # clang options for ObjC++

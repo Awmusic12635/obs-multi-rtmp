@@ -27,7 +27,6 @@ set(_obs_clang_c_options
     -Wdeprecated-declarations
     -Wempty-body
     -Wenum-conversion
-    -Werror=return-type
     -Wextra
     -Wformat
     -Wformat-security
